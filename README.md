@@ -7,7 +7,7 @@ This card allows you to display the latest commits from your Bitbucket repositor
 First you need to install the package through composer:
 
 ```bash
-composer require murdercode/Nova4BitbucketNewsCommits
+composer require murdercode/nova4-bitbucket-news-commits
 ```
 
 Then you need to add the following code in `config/services.php`:
