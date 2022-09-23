@@ -14,7 +14,8 @@ class BitbucketAPI
             $repository = config('nova4-bitbucket-news-commits.repository');
         }
 
-        $commits = cache()->remember('commits', now()->addMinutes(15), function () use ($client,
+        $commits = cache()->remember('commits.'.$repository, now()->addMinutes(15), function () use
+        ($client,
             $repository) {
             $response = $client->request(
                 'GET',
