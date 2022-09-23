@@ -34,6 +34,6 @@ class BitbucketAPI
             return $json['values'];
         }
         );
-        return [$commits, $repository];
+        return $commits;
     }
 }
