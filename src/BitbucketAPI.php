@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 
 class BitbucketAPI
 {
-    public function getCommits(string $repository)
+    public function getCommits(string $repository = null)
     {
         $client = new Client();
 
