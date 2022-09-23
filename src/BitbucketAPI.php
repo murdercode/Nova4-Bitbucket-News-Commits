@@ -11,7 +11,7 @@ class BitbucketAPI
         $client = new Client();
 
         if($repository == null || $repository == '') {
-            $repository = config('nova4-bitbucket-news-commits.repository');
+            $repository = config('services.nova4-bitbucket-news-commits.repository');
         }
 
         $commits = cache()->remember('commits.'.$repository, now()->addMinutes(15), function () use
