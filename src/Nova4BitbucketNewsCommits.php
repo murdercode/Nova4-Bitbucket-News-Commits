@@ -18,7 +18,7 @@ class Nova4BitbucketNewsCommits extends Card
      *
      * @return $this
      */
-    public function commits(?string $customRepository)
+    public function commits(?string $customRepository = null)
     {
         return $this->withMeta(
             [
