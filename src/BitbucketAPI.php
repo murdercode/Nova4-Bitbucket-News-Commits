@@ -10,7 +10,7 @@ class BitbucketAPI
     {
         $client = new Client();
 
-        if($repository == null) {
+        if($repository == null || $repository == '') {
             $repository = config('nova4-bitbucket-news-commits.repository');
         }
 
