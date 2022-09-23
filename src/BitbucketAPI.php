@@ -6,17 +6,21 @@ use GuzzleHttp\Client;
 
 class BitbucketAPI
 {
-    public function getCommits()
+    public function getCommits(string $repository)
     {
         $client = new Client();
 
-        $commits = cache()->remember('commits', now()->addMinutes(15), function () use ($client) {
+        if($repository == null) {
+            $repository = config('nova4-bitbucket-news-commits.repository');
+        }
+
+        $commits = cache()->remember('commits', now()->addMinutes(15), function () use ($client,
+            $repository) {
             $response = $client->request(
                 'GET',
                 'https://api.bitbucket.org/2.0/repositories/' . config(
                     'services.nova4-bitbucket-news-commits.folder'
-                ) . '/' .
-                config('services.nova4-bitbucket-news-commits.repository') . '/commits',
+                ) . '/' . $repository . '/commits',
                 [
                     'auth' => [
                         config('services.nova4-bitbucket-news-commits.username'),

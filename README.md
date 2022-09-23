@@ -24,7 +24,7 @@ Then you need to add the following code in `config/services.php`:
 Now you can fill your `.env` file with the following variables:
 
 ```bash
-NOVA_BITBUCKET_FOLDER=<your-bitbucket-folder> <- (sometimes it can be equal to the username)
+NOVA_BITBUCKET_FOLDER=<your-bitbucket-folder>
 NOVA_BITBUCKET_USERNAME=<your-bitbucket-username>
 NOVA_BITBUCKET_PASSWORD=<your-bitbucket-password>
 NOVA_BITBUCKET_REPOSITORY=<your-bitbucket-repository>
@@ -49,6 +49,23 @@ class Main extends Dashboard
     }
 }
 
+```
+
+You can also override the repository where you want to get the commits from:
+
+```php
+use Murdercode\Nova4BitbucketNewsCommits\Nova4BitbucketNewsCommits;
+//...
+
+class Main extends Dashboard
+{
+    public function cards()
+    {
+        return [
+            (new Nova4BitbucketNewsCommits())->commits('my-custom-repo')->limit(20)
+        ];
+    }
+}
 ```
 
 This tool uses your `CACHE_DRIVER` defined in `.env` to cache the data.
